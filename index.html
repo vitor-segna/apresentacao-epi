@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apresentação - EPI Guard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #08080a;
-            --primary: #dc2626;      /* Vermelho Facchini */
-            --secondary: #18181b;    /* Cinza Escuro Facchini */
-            --accent: #ffffff;       /* Branco Facchini */
+            --primary: #dc2626;
+            /* Vermelho Facchini */
+            --secondary: #18181b;
+            /* Cinza Escuro Facchini */
+            --accent: #ffffff;
+            /* Branco Facchini */
             --text-light: #ffffff;
             --text-muted: #a1a1aa;
             --glass-bg: rgba(15, 15, 18, 0.85);
@@ -81,24 +87,55 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(3%, 3%) scale(1.05); }
-            100% { transform: translate(-3%, -3%) scale(0.95); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(3%, 3%) scale(1.05);
+            }
+
+            100% {
+                transform: translate(-3%, -3%) scale(0.95);
+            }
         }
 
         /* EPIs Decorativos (Marcas d'água industriais Facchini) */
         .epi-decor {
             position: absolute;
-            color: rgba(220, 38, 38, 0.05); /* Vermelho translúcido corporativo */
+            color: rgba(220, 38, 38, 0.05);
+            /* Vermelho translúcido corporativo */
             font-size: 11rem;
             pointer-events: none;
             z-index: 1;
             transition: all 1s ease;
         }
-        .epi-1 { top: 8%; right: 6%; transform: rotate(15deg); }
-        .epi-2 { bottom: 14%; left: 5%; transform: rotate(-20deg); }
-        .epi-3 { top: 42%; left: 3%; transform: rotate(-10deg); font-size: 9rem; }
-        .epi-4 { bottom: 15%; right: 8%; transform: rotate(25deg); font-size: 10rem; }
+
+        .epi-1 {
+            top: 8%;
+            right: 6%;
+            transform: rotate(15deg);
+        }
+
+        .epi-2 {
+            bottom: 14%;
+            left: 5%;
+            transform: rotate(-20deg);
+        }
+
+        .epi-3 {
+            top: 42%;
+            left: 3%;
+            transform: rotate(-10deg);
+            font-size: 9rem;
+        }
+
+        .epi-4 {
+            bottom: 15%;
+            right: 8%;
+            transform: rotate(25deg);
+            font-size: 10rem;
+        }
 
         /* Slides Container */
         .slider {
@@ -139,7 +176,8 @@
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            border-radius: 4px; /* Reto / menos arredondado */
+            border-radius: 4px;
+            /* Reto / menos arredondado */
             padding: 3.5rem;
             width: 95vw;
             height: 82vh;
@@ -162,7 +200,8 @@
             background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
         }
@@ -205,7 +244,8 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.02);
             padding: 1rem 1.5rem;
-            border-radius: 2px; /* Reto */
+            border-radius: 2px;
+            /* Reto */
             border-left: 4px solid var(--primary);
             transition: transform 0.3s ease, background 0.3s ease;
         }
@@ -298,7 +338,8 @@
             color: var(--accent);
             width: 48px;
             height: 48px;
-            border-radius: 4px; /* Reto */
+            border-radius: 4px;
+            /* Reto */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -349,18 +390,44 @@
         .badge {
             display: inline-block;
             padding: 0.3rem 0.8rem;
-            border-radius: 3px; /* Reto */
+            border-radius: 3px;
+            /* Reto */
             font-size: 0.85rem;
             font-weight: 600;
             margin-right: 0.4rem;
             margin-bottom: 0.4rem;
             border: 1px solid var(--glass-border);
         }
-        .badge-php { background: rgba(119, 123, 179, 0.15); color: #a3a9d1; border-color: rgba(119, 123, 179, 0.4); }
-        .badge-python { background: rgba(55, 118, 171, 0.15); color: #80aed2; border-color: rgba(55, 118, 171, 0.4); }
-        .badge-db { background: rgba(51, 103, 145, 0.15); color: #84a8c9; border-color: rgba(51, 103, 145, 0.4); }
-        .badge-web { background: rgba(243, 91, 54, 0.15); color: #f58466; border-color: rgba(243, 91, 54, 0.4); }
-        .badge-ai { background: rgba(220, 38, 38, 0.15); color: #fca5a5; border-color: rgba(220, 38, 38, 0.4); }
+
+        .badge-php {
+            background: rgba(119, 123, 179, 0.15);
+            color: #a3a9d1;
+            border-color: rgba(119, 123, 179, 0.4);
+        }
+
+        .badge-python {
+            background: rgba(55, 118, 171, 0.15);
+            color: #80aed2;
+            border-color: rgba(55, 118, 171, 0.4);
+        }
+
+        .badge-db {
+            background: rgba(51, 103, 145, 0.15);
+            color: #84a8c9;
+            border-color: rgba(51, 103, 145, 0.4);
+        }
+
+        .badge-web {
+            background: rgba(243, 91, 54, 0.15);
+            color: #f58466;
+            border-color: rgba(243, 91, 54, 0.4);
+        }
+
+        .badge-ai {
+            background: rgba(220, 38, 38, 0.15);
+            color: #fca5a5;
+            border-color: rgba(220, 38, 38, 0.4);
+        }
 
         /* Splash Screen Facchini */
         #splash-screen {
@@ -411,12 +478,19 @@
         }
 
         @keyframes pulse-text {
-            0% { transform: scale(0.98); opacity: 0.9; }
-            100% { transform: scale(1.02); opacity: 1; }
-        }
+            0% {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
 
+            100% {
+                transform: scale(1.02);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Splash Screen Facchini -->
@@ -432,7 +506,7 @@
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
-        
+
         <!-- EPIs Decorativos (Marcas d'água industriais Facchini) -->
         <i class="fa-solid fa-helmet-safety epi-decor epi-1"></i>
         <i class="fa-solid fa-glasses epi-decor epi-2"></i>
@@ -444,12 +518,16 @@
         <!-- Slide 1: Título / Capa -->
         <div class="slide active">
             <div class="glass-card" style="text-align: center; justify-content: center; align-items: center;">
-                <i class="fa-solid fa-shield-halved" style="font-size: 6rem; color: var(--primary); margin-bottom: 2rem; filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.6));"></i>
+                <i class="fa-solid fa-shield-halved"
+                    style="font-size: 6rem; color: var(--primary); margin-bottom: 2rem; filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.6));"></i>
                 <h1 class="slide-title" style="font-size: 4.5rem; letter-spacing: 2px;">EPI GUARD</h1>
-                <h2 class="slide-subtitle" style="font-size: 1.8rem; border: none; margin-bottom: 0;">Monitoramento Inteligente e Autônomo de EPIs</h2>
-                <div style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.02); border-left: 4px solid var(--primary); border-right: 4px solid var(--primary); max-width: 700px;">
+                <h2 class="slide-subtitle" style="font-size: 1.8rem; border: none; margin-bottom: 0;">Monitoramento
+                    Inteligente e Autônomo de EPIs</h2>
+                <div
+                    style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.02); border-left: 4px solid var(--primary); border-right: 4px solid var(--primary); max-width: 700px;">
                     <p style="color: var(--text-muted); font-size: 1.25rem; line-height: 1.6;">
-                        Visão computacional e inteligência artificial aplicadas para garantir a conformidade de segurança e prevenção de acidentes na <strong>Facchini</strong> em tempo real.
+                        Visão computacional e inteligência artificial aplicadas para garantir a conformidade de
+                        segurança e prevenção de acidentes na <strong>Facchini</strong> em tempo real.
                     </p>
                 </div>
             </div>
@@ -459,17 +537,28 @@
         <div class="slide">
             <div class="glass-card">
                 <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h1 class="slide-title">O Painel Web Administrativo</h1>
-                        <span class="badge badge-php" style="font-size: 1.1rem; padding: 0.5rem 1.2rem;">PHP & Javascript</span>
+                        <span class="badge badge-php" style="font-size: 1.1rem; padding: 0.5rem 1.2rem;">PHP &
+                            Javascript</span>
                     </div>
                     <h2 class="slide-subtitle">Centralização de dados e gerenciamento de equipes de segurança</h2>
                 </div>
                 <div class="content-box">
                     <ul>
-                        <li><i class="fa-solid fa-chart-bar"></i> <div><strong>Dashboard Completo:</strong> Métricas consolidadas e gráficos dinâmicos de conformidade e ocorrências por filiais e setores.</div></li>
-                        <li><i class="fa-solid fa-id-card"></i> <div><strong>Gestão e Cadastro:</strong> Controle completo de funcionários cadastrados, setores industriais da fábrica e parametrização de EPIs obrigatórios.</div></li>
-                        <li><i class="fa-solid fa-clock-rotate-left"></i> <div><strong>Histórico de Ocorrências:</strong> Registro detalhado de infrações com filtros de busca rápidos e listagem contendo fotos de evidências.</div></li>
+                        <li><i class="fa-solid fa-chart-bar"></i>
+                            <div><strong>Dashboard Completo:</strong> Métricas consolidadas e gráficos dinâmicos de
+                                conformidade e ocorrências por filiais e setores.</div>
+                        </li>
+                        <li><i class="fa-solid fa-id-card"></i>
+                            <div><strong>Gestão e Cadastro:</strong> Controle completo de funcionários cadastrados,
+                                setores industriais da fábrica e parametrização de EPIs obrigatórios.</div>
+                        </li>
+                        <li><i class="fa-solid fa-clock-rotate-left"></i>
+                            <div><strong>Histórico de Ocorrências:</strong> Registro detalhado de infrações com filtros
+                                de busca rápidos e listagem contendo fotos de evidências.</div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -479,18 +568,34 @@
         <div class="slide">
             <div class="glass-card">
                 <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h1 class="slide-title">O Cérebro da Inteligência Artificial</h1>
-                        <span class="badge badge-python" style="font-size: 1.1rem; padding: 0.5rem 1.2rem;">Python & YOLOv8</span>
+                        <span class="badge badge-python" style="font-size: 1.1rem; padding: 0.5rem 1.2rem;">Python &
+                            YOLOv8</span>
                     </div>
                     <h2 class="slide-subtitle">Processamento de imagem e captura paralela multithread</h2>
                 </div>
                 <div class="content-box">
                     <ul>
-                        <li><i class="fa-solid fa-network-wired"></i> <div><strong>servidor_camera.py:</strong> Script principal responsável por receber transmissões de vídeo via protocolo RTSP das câmeras e exibir a grade multi-câmera na tela.</div></li>
-                        <li><i class="fa-solid fa-file-video"></i> <div><strong>servidor.py:</strong> Script utilitário utilizado para testar e validar o modelo de IA localmente com arquivos de vídeo gravados.</div></li>
-                        <li><i class="fa-solid fa-microchip"></i> <div><strong>Modelo de IA YOLOv8:</strong> Modelo personalizado treinado para detectar a presença ou ausência de óculos de proteção (classes <code>com_epi</code> / <code>sem_epi</code>).</div></li>
-                        <li><i class="fa-solid fa-database"></i> <div><strong>camera_db.py:</strong> Gerencia persistência no PostgreSQL, salva evidências em <code>uploads/evidencias</code> e fecha ocorrências ativas de forma automatizada.</div></li>
+                        <li><i class="fa-solid fa-network-wired"></i>
+                            <div><strong>servidor_camera.py:</strong> Script principal responsável por receber
+                                transmissões de vídeo via protocolo RTSP das câmeras e exibir a grade multi-câmera na
+                                tela.</div>
+                        </li>
+                        <li><i class="fa-solid fa-file-video"></i>
+                            <div><strong>servidor.py:</strong> Script utilitário utilizado para testar e validar o
+                                modelo de IA localmente com arquivos de vídeo gravados.</div>
+                        </li>
+                        <li><i class="fa-solid fa-microchip"></i>
+                            <div><strong>Modelo de IA YOLOv8:</strong> Modelo personalizado treinado para detectar a
+                                presença ou ausência de óculos de proteção (classes <code>com_epi</code> /
+                                <code>sem_epi</code>).</div>
+                        </li>
+                        <li><i class="fa-solid fa-database"></i>
+                            <div><strong>camera_db.py:</strong> Gerencia persistência no PostgreSQL, salva evidências em
+                                <code>uploads/evidencias</code> e fecha ocorrências ativas de forma automatizada.</div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -500,7 +605,8 @@
         <div class="slide">
             <div class="glass-card">
                 <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h1 class="slide-title">Stack Tecnológica</h1>
                         <div style="display: flex; gap: 0.5rem;">
                             <span class="badge badge-web">Nginx</span>
@@ -516,22 +622,26 @@
                         <div class="tech-card">
                             <i class="fa-brands fa-php tech-icon"></i>
                             <div class="tech-title">PHP</div>
-                            <div class="tech-desc">Desenvolvimento do backend administrativo, controllers no padrão MVC e renderização de relatórios do painel web.</div>
+                            <div class="tech-desc">Desenvolvimento do backend administrativo, controllers no padrão MVC
+                                e renderização de relatórios do painel web.</div>
                         </div>
                         <div class="tech-card">
                             <i class="fa-brands fa-python tech-icon"></i>
                             <div class="tech-title">Python</div>
-                            <div class="tech-desc">Responsável pela execução do modelo de Visão Computacional (YOLOv8), OpenCV e processamento de frames em tempo real.</div>
+                            <div class="tech-desc">Responsável pela execução do modelo de Visão Computacional (YOLOv8),
+                                OpenCV e processamento de frames em tempo real.</div>
                         </div>
                         <div class="tech-card">
                             <i class="fa-solid fa-database tech-icon"></i>
                             <div class="tech-title">PostgreSQL</div>
-                            <div class="tech-desc">Banco de dados relacional que gerencia dados corporativos, logs de conformidade de EPIs e alertas de infração.</div>
+                            <div class="tech-desc">Banco de dados relacional que gerencia dados corporativos, logs de
+                                conformidade de EPIs e alertas de infração.</div>
                         </div>
                         <div class="tech-card">
                             <i class="fa-solid fa-server tech-icon"></i>
                             <div class="tech-title">Nginx</div>
-                            <div class="tech-desc">Servidor HTTP de alto desempenho e proxy reverso, ideal para hospedar a aplicação web e servir imagens de evidência com rapidez.</div>
+                            <div class="tech-desc">Servidor HTTP de alto desempenho e proxy reverso, ideal para hospedar
+                                a aplicação web e servir imagens de evidência com rapidez.</div>
                         </div>
                     </div>
                 </div>
@@ -546,22 +656,37 @@
                     <h2 class="slide-subtitle">A jornada do monitoramento em tempo real do início ao fim</h2>
                 </div>
                 <div class="content-box" style="justify-content: center; gap: 1rem;">
-                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--primary);">
-                        <div style="background: var(--primary); color: #000; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">1</div>
+                    <div
+                        style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--primary);">
+                        <div
+                            style="background: var(--primary); color: #000; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">
+                            1</div>
                         <p style="font-size: 1.25rem;">
-                            <strong>Captura & Análise:</strong> As câmeras transmitem os frames via <strong>RTSP</strong> para o script <code>servidor_camera.py</code>, que roda o modelo <strong>YOLOv8</strong>.
+                            <strong>Captura & Análise:</strong> As câmeras transmitem os frames via
+                            <strong>RTSP</strong> para o script <code>servidor_camera.py</code>, que roda o modelo
+                            <strong>YOLOv8</strong>.
                         </p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--accent);">
-                        <div style="background: var(--accent); color: #000; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">2</div>
+                    <div
+                        style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--accent);">
+                        <div
+                            style="background: var(--accent); color: #000; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">
+                            2</div>
                         <p style="font-size: 1.25rem;">
-                            <strong>Registro & Evidência:</strong> Identificada a falta de EPI, o <code>camera_db.py</code> salva a foto em <code>public/uploads/evidencias</code> e cria o registro no banco <strong>PostgreSQL</strong>.
+                            <strong>Registro & Evidência:</strong> Identificada a falta de EPI, o
+                            <code>camera_db.py</code> salva a foto em <code>public/uploads/evidencias</code> e cria o
+                            registro no banco <strong>PostgreSQL</strong>.
                         </p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--secondary); border-left-color: #555;">
-                        <div style="background: rgba(255,255,255,0.2); color: #fff; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">3</div>
+                    <div
+                        style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--secondary); border-left-color: #555;">
+                        <div
+                            style="background: rgba(255,255,255,0.2); color: #fff; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">
+                            3</div>
                         <p style="font-size: 1.25rem;">
-                            <strong>Visualização Web:</strong> O servidor web <strong>Nginx</strong> serve a aplicação em <strong>PHP</strong>, que consulta o banco e exibe o alerta com a foto da evidência no Dashboard.
+                            <strong>Visualização Web:</strong> O servidor web <strong>Nginx</strong> serve a aplicação
+                            em <strong>PHP</strong>, que consulta o banco e exibe o alerta com a foto da evidência no
+                            Dashboard.
                         </p>
                     </div>
                 </div>
@@ -588,7 +713,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             const loaderBar = document.getElementById('splashLoaderBar');
             const splash = document.getElementById('splash-screen');
-            
+
             // Inicia o carregamento da barra
             setTimeout(() => {
                 if (loaderBar) {
@@ -609,7 +734,7 @@
         const nextBtn = document.getElementById('nextBtn');
         const progressBar = document.getElementById('progressBar');
         const currentSlideText = document.getElementById('currentSlide');
-        
+
         let currentSlide = 0;
         const totalSlides = slides.length;
 
@@ -666,4 +791,5 @@
         updateSlides();
     </script>
 </body>
+
 </html>
