@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação - EPI Guard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #08080a;
+            --primary: #dc2626;      /* Vermelho Facchini */
+            --secondary: #18181b;    /* Cinza Escuro Facchini */
+            --accent: #ffffff;       /* Branco Facchini */
+            --text-light: #ffffff;
+            --text-muted: #a1a1aa;
+            --glass-bg: rgba(15, 15, 18, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        /* Animated Background Gradients (Tons de vermelho/branco Facchini) */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 20s infinite alternate;
+        }
+
+        .shape-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 75%);
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 75%);
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            top: 40%;
+            left: 30%;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 75%);
+            opacity: 0.25;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(3%, 3%) scale(1.05); }
+            100% { transform: translate(-3%, -3%) scale(0.95); }
+        }
+
+        /* EPIs Decorativos (Marcas d'água industriais Facchini) */
+        .epi-decor {
+            position: absolute;
+            color: rgba(220, 38, 38, 0.05); /* Vermelho translúcido corporativo */
+            font-size: 11rem;
+            pointer-events: none;
+            z-index: 1;
+            transition: all 1s ease;
+        }
+        .epi-1 { top: 8%; right: 6%; transform: rotate(15deg); }
+        .epi-2 { bottom: 14%; left: 5%; transform: rotate(-20deg); }
+        .epi-3 { top: 42%; left: 3%; transform: rotate(-10deg); font-size: 9rem; }
+        .epi-4 { bottom: 15%; right: 8%; transform: rotate(25deg); font-size: 10rem; }
+
+        /* Slides Container */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        /* Glassmorphism Card (Tela Cheia / Layout Reto) */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px; /* Reto / menos arredondado */
+            padding: 3.5rem;
+            width: 95vw;
+            height: 82vh;
+            max-width: 1600px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+        }
+
+        h1, h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
+        .slide-title {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #d4d4d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.8rem;
+        }
+
+        .content-box {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem 1.5rem;
+            border-radius: 2px; /* Reto */
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.04);
+            border-left-color: var(--accent);
+        }
+
+        li i {
+            margin-right: 1.2rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        /* Tech Grid Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            background: rgba(220, 38, 38, 0.05);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+        }
+
+        .tech-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+            color: var(--accent);
+        }
+
+        .tech-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Code highlight */
+        .code-pill {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.15rem 0.6rem;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #ef4444;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--accent);
+            width: 48px;
+            height: 48px;
+            border-radius: 4px; /* Reto */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #000000;
+            transform: scale(1.05);
+        }
+
+        .btn:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-muted);
+        }
+
+        .progress-container {
+            width: 250px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 20%;
+            transition: width 0.5s ease;
+        }
+
+        .slide-counter {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 55px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Badges (Retos) */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px; /* Reto */
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+            border: 1px solid var(--glass-border);
+        }
+        .badge-php { background: rgba(119, 123, 179, 0.15); color: #a3a9d1; border-color: rgba(119, 123, 179, 0.4); }
+        .badge-python { background: rgba(55, 118, 171, 0.15); color: #80aed2; border-color: rgba(55, 118, 171, 0.4); }
+        .badge-db { background: rgba(51, 103, 145, 0.15); color: #84a8c9; border-color: rgba(51, 103, 145, 0.4); }
+        .badge-web { background: rgba(243, 91, 54, 0.15); color: #f58466; border-color: rgba(243, 91, 54, 0.4); }
+        .badge-ai { background: rgba(220, 38, 38, 0.15); color: #fca5a5; border-color: rgba(220, 38, 38, 0.4); }
+
+        /* Splash Screen Facchini */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--primary);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 5rem;
+            color: #ffffff;
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+            animation: pulse-text 2s infinite alternate;
+        }
+
+        .splash-loader-bg {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .splash-loader-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes pulse-text {
+            0% { transform: scale(0.98); opacity: 0.9; }
+            100% { transform: scale(1.02); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen Facchini -->
+    <div id="splash-screen">
+        <h1 class="splash-title">FACCHINI</h1>
+        <div class="splash-loader-bg">
+            <div class="splash-loader-bar" id="splashLoaderBar"></div>
+        </div>
+    </div>
+
+    <!-- Background Animations (com marcas d'água de EPIs) -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        
+        <!-- EPIs Decorativos (Marcas d'água industriais Facchini) -->
+        <i class="fa-solid fa-helmet-safety epi-decor epi-1"></i>
+        <i class="fa-solid fa-glasses epi-decor epi-2"></i>
+        <i class="fa-solid fa-shield-halved epi-decor epi-3"></i>
+        <i class="fa-solid fa-vest epi-decor epi-4"></i>
+    </div>
+
+    <div class="slider">
+        <!-- Slide 1: Título / Capa -->
+        <div class="slide active">
+            <div class="glass-card" style="text-align: center; justify-content: center; align-items: center;">
+                <i class="fa-solid fa-shield-halved" style="font-size: 6rem; color: var(--primary); margin-bottom: 2rem; filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.6));"></i>
+                <h1 class="slide-title" style="font-size: 4.5rem; letter-spacing: 2px;">EPI GUARD</h1>
+                <h2 class="slide-subtitle" style="font-size: 1.8rem; border: none; margin-bottom: 0;">Monitoramento Inteligente e Autônomo de EPIs</h2>
+                <div style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.02); border-left: 4px solid var(--primary); border-right: 4px solid var(--primary); max-width: 700px;">
+                    <p style="color: var(--text-muted); font-size: 1.25rem; line-height: 1.6;">
+                        Visão computacional e inteligência artificial aplicadas para garantir a conformidade de segurança e prevenção de acidentes na <strong>Facchini</strong> em tempo real.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: O Painel Web (Site) -->
+        <div class="slide">
+            <div class="glass-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h1 class="slide-title">O Painel Web Administrativo</h1>
+                        <span class="badge badge-php" style="font-size: 1.1rem; padding: 0.5rem 1.2rem;">PHP & Javascript</span>
+                    </div>
+                    <h2 class="slide-subtitle">Centralização de dados e gerenciamento de equipes de segurança</h2>
+                </div>
+                <div class="content-box">
+                    <ul>
+                        <li><i class="fa-solid fa-chart-bar"></i> <div><strong>Dashboard Completo:</strong> Métricas consolidadas e gráficos dinâmicos de conformidade e ocorrências por filiais e setores.</div></li>
+                        <li><i class="fa-solid fa-id-card"></i> <div><strong>Gestão e Cadastro:</strong> Controle completo de funcionários cadastrados, setores industriais da fábrica e parametrização de EPIs obrigatórios.</div></li>
+                        <li><i class="fa-solid fa-clock-rotate-left"></i> <div><strong>Histórico de Ocorrências:</strong> Registro detalhado de infrações com filtros de busca rápidos e listagem contendo fotos de evidências.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: O Servidor da Câmera (IA) -->
+        <div class="slide">
+            <div class="glass-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h1 class="slide-title">O Cérebro da Inteligência Artificial</h1>
+                        <span class="badge badge-python" style="font-size: 1.1rem; padding: 0.5rem 1.2rem;">Python & YOLOv8</span>
+                    </div>
+                    <h2 class="slide-subtitle">Processamento de imagem e captura paralela multithread</h2>
+                </div>
+                <div class="content-box">
+                    <ul>
+                        <li><i class="fa-solid fa-network-wired"></i> <div><strong>servidor_camera.py:</strong> Script principal responsável por receber transmissões de vídeo via protocolo RTSP das câmeras e exibir a grade multi-câmera na tela.</div></li>
+                        <li><i class="fa-solid fa-microchip"></i> <div><strong>Modelo de IA YOLOv8:</strong> Modelo personalizado treinado para detectar a presença ou ausência de óculos de proteção (classes <code>com_epi</code> / <code>sem_epi</code>).</div></li>
+                        <li><i class="fa-solid fa-database"></i> <div><strong>camera_db.py:</strong> Gerencia persistência no PostgreSQL, salva evidências em <code>uploads/evidencias</code> e fecha ocorrências ativas de forma automatizada.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Stack Tecnológica -->
+        <div class="slide">
+            <div class="glass-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h1 class="slide-title">Stack Tecnológica</h1>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <span class="badge badge-web">Nginx</span>
+                            <span class="badge badge-php">PHP</span>
+                            <span class="badge badge-python">Python</span>
+                            <span class="badge badge-db">Postgres</span>
+                        </div>
+                    </div>
+                    <h2 class="slide-subtitle">A infraestrutura que garante performance e estabilidade ao projeto</h2>
+                </div>
+                <div class="content-box">
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <i class="fa-brands fa-php tech-icon"></i>
+                            <div class="tech-title">PHP</div>
+                            <div class="tech-desc">Desenvolvimento do backend administrativo, controllers no padrão MVC e renderização de relatórios do painel web.</div>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fa-brands fa-python tech-icon"></i>
+                            <div class="tech-title">Python</div>
+                            <div class="tech-desc">Responsável pela execução do modelo de Visão Computacional (YOLOv8), OpenCV e processamento de frames em tempo real.</div>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fa-solid fa-database tech-icon"></i>
+                            <div class="tech-title">PostgreSQL</div>
+                            <div class="tech-desc">Banco de dados relacional que gerencia dados corporativos, logs de conformidade de EPIs e alertas de infração.</div>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fa-solid fa-server tech-icon"></i>
+                            <div class="tech-title">Nginx</div>
+                            <div class="tech-desc">Servidor HTTP de alto desempenho e proxy reverso, ideal para hospedar a aplicação web e servir imagens de evidência com rapidez.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Fluxo Geral de Funcionamento -->
+        <div class="slide">
+            <div class="glass-card">
+                <div>
+                    <h1 class="slide-title">Fluxo Geral de Funcionamento</h1>
+                    <h2 class="slide-subtitle">A jornada do monitoramento em tempo real do início ao fim</h2>
+                </div>
+                <div class="content-box" style="justify-content: center; gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--primary);">
+                        <div style="background: var(--primary); color: #000; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">1</div>
+                        <p style="font-size: 1.25rem;">
+                            <strong>Captura & Análise:</strong> As câmeras transmitem os frames via <strong>RTSP</strong> para o script <code>servidor_camera.py</code>, que roda o modelo <strong>YOLOv8</strong>.
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--accent);">
+                        <div style="background: var(--accent); color: #000; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">2</div>
+                        <p style="font-size: 1.25rem;">
+                            <strong>Registro & Evidência:</strong> Identificada a falta de EPI, o <code>camera_db.py</code> salva a foto em <code>public/uploads/evidencias</code> e cria o registro no banco <strong>PostgreSQL</strong>.
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 2px; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--secondary); border-left-color: #555;">
+                        <div style="background: rgba(255,255,255,0.2); color: #fff; width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0;">3</div>
+                        <p style="font-size: 1.25rem;">
+                            <strong>Visualização Web:</strong> O servidor web <strong>Nginx</strong> serve a aplicação em <strong>PHP</strong>, que consulta o banco e exibe o alerta com a foto da evidência no Dashboard.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="btn" id="prevBtn" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <span class="slide-counter"><span id="currentSlide">1</span> / 5</span>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <button class="btn" id="nextBtn">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script>
+        // Splash Screen Loading Control
+        window.addEventListener('DOMContentLoaded', () => {
+            const loaderBar = document.getElementById('splashLoaderBar');
+            const splash = document.getElementById('splash-screen');
+            
+            // Inicia o carregamento da barra
+            setTimeout(() => {
+                if (loaderBar) {
+                    loaderBar.style.width = '100%';
+                }
+            }, 100);
+
+            // Após 2.3 segundos, faz o fade-out
+            setTimeout(() => {
+                if (splash) {
+                    splash.classList.add('fade-out');
+                }
+            }, 2300);
+        });
+
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const currentSlideText = document.getElementById('currentSlide');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index < currentSlide) {
+                    slide.classList.add('prev');
+                }
+            });
+
+            // Update controls
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+
+            // Update progress
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            currentSlideText.innerText = currentSlide + 1;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlides();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlides();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlides();
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlides();
+                }
+            }
+        });
+
+        // Initialize
+        updateSlides();
+    </script>
+</body>
+</html>
